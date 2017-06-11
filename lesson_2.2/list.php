@@ -23,8 +23,6 @@
 			$name = "test.php?name=test\ $v";
 			$str = str_replace (" ", "", $name);
 			echo "<a href='$str'>" . "$v" .'</a>'. "<br>";
-	 	}
-		else { 
 		}
 	}
 
