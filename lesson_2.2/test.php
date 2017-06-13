@@ -31,7 +31,7 @@
       
 			echo '<legend>'."$textJsonK".'</legend>';
 
-			foreach ($textJson[$k]["version"] as  $value) {
+			foreach ($v["version"] as  $value) {
 				echo '<label> <input type="radio"'."name=q$k".' value = '."$value".'>'. "$value" . '</label>';
 			}
 			echo '</fieldset>';		
