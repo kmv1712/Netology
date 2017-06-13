@@ -23,10 +23,12 @@
 
 	<form action="" method="POST">	
 		<?php 
+
 		foreach ($textJson as  $k=>$v) {
 			echo '<fieldset>';
-			$textJsonK = $textJson["$k"]["quetion"];
+			$textJsonK = $v["quetion"];
       // echo "$textJsonK" . '<br>';
+      
 			echo '<legend>'."$textJsonK".'</legend>';
 
 			foreach ($textJson[$k]["version"] as  $value) {
@@ -34,8 +36,8 @@
 			}
 			echo '</fieldset>';		
 		}
-
 		?>
+
 		<input type="submit" value="Отправить">
 	</form>
 
@@ -62,6 +64,7 @@
 			}
 		}
 	}
+
 	?>
 
 </body>
