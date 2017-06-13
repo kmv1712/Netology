@@ -10,9 +10,9 @@
   // error_reporting(E_ALL);
   // echo $_GET['name'];
 
-
+	if ($_GET['name'])
+	{
 	$textJson = file_get_contents($_GET['name']);
-
   if (strlen($textJson) > 1) 
 {	$textJson = json_decode ( $textJson, true);
 	// echo '<pre>';
@@ -71,8 +71,13 @@
 else {
 	echo "Загруженный тест пуст";
 }
-	?>
+}
+else {
+	echo "Тест не выбран";
+}
+	
 
+?>
 </body>
 </html>
 
