@@ -9,16 +9,18 @@
 	<?php 
   // error_reporting(E_ALL);
   // echo $_GET['name'];
-	$list = $_GET['name'];
 
-	$textJson = file_get_contents($list);
-	$textJson = json_decode ( $textJson, true);
+
+	$textJson = file_get_contents($_GET['name']);
+
+  if (strlen($textJson) > 1) 
+{	$textJson = json_decode ( $textJson, true);
 	// echo '<pre>';
 	// echo print_r($textJson);
 	// echo '</pre>';
 	?>
 
-	<h3><?php echo $textJson[0]["nameTest"]; ?></h3>
+<!-- 	<h3><?php echo $textJson[0]["nameTest"]; ?></h3> -->
 
 
 	<form action="" method="POST">	
@@ -65,6 +67,10 @@
 		}
 	}
 
+}
+else {
+	echo "Загруженный тест пуст";
+}
 	?>
 
 </body>
