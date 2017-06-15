@@ -12,72 +12,92 @@
 
 	if ($_GET['name'])
 	{
-	$textJson = file_get_contents($_GET['name']);
-  if (strlen($textJson) > 1) 
-{	$textJson = json_decode ( $textJson, true);
+		$textJson = file_get_contents($_GET['name']);
+		if (strlen($textJson) > 1) 
+			{	$textJson = json_decode ( $textJson, true);
 	// echo '<pre>';
 	// echo print_r($textJson);
 	// echo '</pre>';
-	?>
+				?>
 
-<!-- 	<h3><?php echo $textJson[0]["nameTest"]; ?></h3> -->
+				<!-- 	<h3><?php echo $textJson[0]["nameTest"]; ?></h3> -->
 
 
-	<form action="" method="POST">	
-		<?php 
+				<form action="" method="POST">	
+					<?php 
 
-		foreach ($textJson as  $k=>$v) {
-			echo '<fieldset>';
-			$textJsonK = $v["quetion"];
+					foreach ($textJson as  $k=>$v) {
+						echo '<fieldset>';
+						$textJsonK = $v["quetion"];
       // echo "$textJsonK" . '<br>';
-      
-			echo '<legend>'."$textJsonK".'</legend>';
 
-			foreach ($v["version"] as  $value) {
-				echo '<label> <input type="radio"'."name=q$k".' value = '."$value".'>'. "$value" . '</label>';
-			}
-			echo '</fieldset>';		
-		}
-		?>
+						echo '<legend>'."$textJsonK".'</legend>';
 
-		<input type="submit" value="Отправить">
-	</form>
+						foreach ($v["version"] as  $value) {
+							echo '<label> <input type="radio"'."name=q$k".' value = '."$value".'>'. "$value" . '</label>';
+						}
+						echo '</fieldset>';		
+					}
+					?>
 
-	<?php 
+					<input type="submit" value="Отправить">
+				</form>
+
+				<?php 
     // echo "<br>";
     // echo $_POST['q1']."<br>";
     // echo $_POST['q2']."<br>";
     // echo $textJson[0][answer]."<br>";
     // echo $textJson[1][answer];
-	$answerOne = $_POST['q0'];
-	$answertwo = $_POST['q1'];
+	  // $answerOne = $_POST['q0'];
+	  // $answertwo = $_POST['q1'];
+				$correctAnswer = 0; 
+        $fallsAnswer = 0;
 
-	echo "<br>";
-	if ($answerOne == $textJson[0][answer] && $answertwo ==$textJson[1][answer])
-		echo "Все ответы верны, вы молодец!";
-	else {
-		if ($answerOne == $textJson[0][answer] && $answertwo != $textJson[1][answer])
-			echo "Вы ошиблись во втором вопросе";
-		else {
-			if ($answerOne != $textJson[0][answer] && $answertwo == $textJson[1][answer])
-				echo "Вы ошиблись в первом вопросе";
+				foreach ($textJson as  $k=>$v) {
+      // echo "<br> q$k <br> ";
+					$enterAnswer = $_POST["q$k"];
+	    // echo "<br> $enterAnswer <br> ";
+					$answer = $v["answer"];
+			// echo "<br> $answer <br>";
+					if ($answer == $enterAnswer) 
+					{
+						$correctAnswer = $correctAnswer + 1;
+				// echo "$correctAnswer";
+					}
+					else {
+						$fallsAnswer = $fallsAnswer + 1;
+					}
+				}
+
+
+				$quantityAnswer = $k + 1;
+        // echo "<br> $quantityAnswer <br> ";
+				if ($quantityAnswer == $correctAnswer) {
+					echo "Вы правильно ответили на все вопросы!!!";
+				}
+				else { 
+					if ($correctAnswer == 0) { 
+						echo "Вы ошиблись во всех вопросах";
+					}
+					else {
+						echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
+					}
+
+				}
+
+
+			} 
 			else {
-				echo 'Ошиблись во всех вопросах';
+				echo "Загруженный тест пуст";
 			}
 		}
-	}
+		else {
+			echo "Тест не выбран";
+		}
 
-}
-else {
-	echo "Загруженный тест пуст";
-}
-}
-else {
-	echo "Тест не выбран";
-}
-	
 
-?>
-</body>
-</html>
+		?>
+	</body>
+	</html>
 
