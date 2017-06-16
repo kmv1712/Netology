@@ -57,6 +57,7 @@
 				foreach ($textJson as  $k=>$v) {
       // echo "<br> q$k <br> ";
 					$enterAnswer = $_POST["q$k"];
+					if ($enterAnswer) {
 	    // echo "<br> $enterAnswer <br> ";
 					$answer = $v["answer"];
 			// echo "<br> $answer <br>";
@@ -68,6 +69,11 @@
 					else {
 						$fallsAnswer = $fallsAnswer + 1;
 					}
+				 }
+				 else {
+				 	$nuberAnswer = $k + 1;
+				 	echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
+				 }
 				}
 
 
