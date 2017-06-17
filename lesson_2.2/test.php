@@ -63,21 +63,21 @@
 			// echo "<br> $answer <br>";
 					if ($answer == $enterAnswer) 
 					{
-						$correctAnswer = $correctAnswer + 1;
+						$correctAnswer =  ++$correctAnswer;
 				// echo "$correctAnswer";
 					}
 					else {
-						$fallsAnswer = $fallsAnswer + 1;
+						$fallsAnswer =  ++$fallsAnswer;
 					}
 				 }
 				 else {
-				 	$nuberAnswer = $k + 1;
+				 	$nuberAnswer = ++ $k ;
 				 	echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
 				 }
 				}
 
 
-				$quantityAnswer = $k + 1;
+				$quantityAnswer = ++ $k ;
         // echo "<br> $quantityAnswer <br> ";
 				if ($quantityAnswer == $correctAnswer) {
 					echo "Вы правильно ответили на все вопросы!!!";
