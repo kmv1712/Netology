@@ -63,11 +63,11 @@
 			// echo "<br> $answer <br>";
 					if ($answer == $enterAnswer) 
 					{
-						$correctAnswer =  ++$correctAnswer;
+						++$correctAnswer;
 				// echo "$correctAnswer";
 					}
 					else {
-						$fallsAnswer =  ++$fallsAnswer;
+						++$fallsAnswer;
 					}
 				 }
 				 else {
