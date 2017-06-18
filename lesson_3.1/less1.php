@@ -3,18 +3,21 @@
 
 class News
 {
-public $heading;
-public $news; //свойство
-public function simpleMethod() {
-echo '<h2>' . "<?php $object -> heading; ?>" . '</h2>';
-echo "<?php $object -> news; ?>";
+	public $heading;
+  public $news; 
+  
+  public function echoMethod() {
+  echo '<h2>' . $this -> heading . '</h2>'. "<br>" . $this -> news;
+
+	
 }
 }
 
 $object = new News();
 $object -> heading = "Лето пришло!!"; 
 $object -> news ="Сегодня к нам пришло лето, все радуються и веселяться. ";
-echo $object -> simpleMethod(); 
+
+echo $object -> echoMethod(); 
 
 
 ?>
