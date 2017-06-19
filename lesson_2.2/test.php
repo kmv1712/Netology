@@ -28,13 +28,13 @@
 
 					foreach ($textJson as  $k=>$v) {
 						echo '<fieldset>';
-						$textJsonK = $v[quetion];
+						$textJsonK = $v['quetion'];
       // echo "$textJsonK" . '<br>';
 
 						echo '<legend>'. $textJsonK .'</legend>';
 
-						foreach ($v[version] as  $value) {
-							echo '<label> <input type = radio name =q'. $k . ' value = '. $value .'>'. $value . '</label>';
+						foreach ($v['version'] as  $value) {
+							echo "<label> <input type = radio name = q$k" . ' value = '. $value .'>'. $value . '</label>';
 						}
 						echo '</fieldset>';		
 					}
@@ -56,10 +56,11 @@
 
 				foreach ($textJson as  $k=>$v) {
       // echo "<br> q$k <br> ";
+					
 					$enterAnswer = $_POST["q$k"];
 					if ($enterAnswer) {
 	    // echo "<br> $enterAnswer <br> ";
-					$answer = $v[answer];
+					$answer = $v['answer'];
 			// echo "<br> $answer <br>";
 					if ($answer == $enterAnswer) 
 					{
