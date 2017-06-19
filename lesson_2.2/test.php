@@ -28,7 +28,7 @@
 
 					foreach ($textJson as  $k=>$v) {
 						echo '<fieldset>';
-						$textJsonK = $v["quetion"];
+						$textJsonK = $v[quetion];
       // echo "$textJsonK" . '<br>';
 
 						echo '<legend>'."$textJsonK".'</legend>';
@@ -59,7 +59,7 @@
 					$enterAnswer = $_POST["q$k"];
 					if ($enterAnswer) {
 	    // echo "<br> $enterAnswer <br> ";
-					$answer = $v["answer"];
+					$answer = $v[answer];
 			// echo "<br> $answer <br>";
 					if ($answer == $enterAnswer) 
 					{
