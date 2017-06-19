@@ -20,7 +20,7 @@
 	// echo '</pre>';
 				?>
 
-				<!-- 	<h3><?php echo $textJson[0]["nameTest"]; ?></h3> -->
+				
 
 
 				<form action="" method="POST">	
@@ -31,10 +31,10 @@
 						$textJsonK = $v[quetion];
       // echo "$textJsonK" . '<br>';
 
-						echo '<legend>'."$textJsonK".'</legend>';
+						echo '<legend>'. $textJsonK .'</legend>';
 
-						foreach ($v["version"] as  $value) {
-							echo '<label> <input type="radio"'."name=q$k".' value = '. $value .'>'. $value . '</label>';
+						foreach ($v[version] as  $value) {
+							echo '<label> <input type = radio name =q'. $k . ' value = '. $value .'>'. $value . '</label>';
 						}
 						echo '</fieldset>';		
 					}
