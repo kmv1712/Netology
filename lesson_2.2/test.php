@@ -52,47 +52,51 @@
 	  // $answerOne = $_POST['q0'];
 	  // $answertwo = $_POST['q1'];
 				$correctAnswer = 0; 
-        $fallsAnswer = 0;
+				$fallsAnswer = 0;
 
-				foreach ($textJson as  $k=>$v) {
-      // echo "<br> q$k <br> ";
+				if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+					foreach ($textJson as  $k=>$v) {
+          // echo "<br> q$k <br> ";
+
+						$enterAnswer = $_POST["q$k"];
+						if (isset($_POST["q$k"]) && !empty($_POST["q$k"])) {
+	        // echo "<br> $enteAnswer <br> ";
+							$answer = $v['answer'];
+			    // echo "<br> $answer <br>";
+							if ($answer == $enterAnswer){
+								++$correctAnswer;
+				     // echo "$correctAnswer";
+							}
+							else {
+								++$fallsAnswer;
+							}
+						}
+
+						else {
+							$nuberAnswer = ++ $k ;
+							echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
+						}	
+					}
 					
-					$enterAnswer = $_POST["q$k"];
-					if ($enterAnswer) {
-	    // echo "<br> $enterAnswer <br> ";
-					$answer = $v['answer'];
-			// echo "<br> $answer <br>";
-					if ($answer == $enterAnswer) 
-					{
-						++$correctAnswer;
-				// echo "$correctAnswer";
-					}
-					else {
-						++$fallsAnswer;
-					}
-				 }
-				 else {
-				 	$nuberAnswer = ++ $k ;
-				 	echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
-				 }
-				}
 
 
-				$quantityAnswer = ++ $k ;
+
+					$quantityAnswer = ++ $k ;
         // echo "<br> $quantityAnswer <br> ";
-				if ($quantityAnswer == $correctAnswer) {
-					echo "Вы правильно ответили на все вопросы!!!";
-				}
-				else { 
-					if ($correctAnswer == 0) { 
-						echo "Вы ошиблись во всех вопросах";
+					if ($quantityAnswer == $correctAnswer) {
+						echo "Вы правильно ответили на все вопросы!!!";
 					}
-					else {
-						echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
+					else { 
+						if ($correctAnswer == 0) { 
+							echo "Вы ошиблись во всех вопросах";
+						}
+						else {
+							echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
+						}
+
 					}
-
 				}
-
 
 			} 
 			else {
@@ -102,7 +106,9 @@
 		else {
 			echo "Тест не выбран";
 		}
-
+		// echo '<pre>';
+		// var_dump($_SERVER);
+  //   echo '</pre>';
 
 		?>
 	</body>
