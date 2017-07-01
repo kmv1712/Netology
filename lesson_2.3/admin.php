@@ -1,3 +1,5 @@
+<?php  ob_start()?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -24,6 +26,7 @@
 			move_uploaded_file($_FILES["myfile"]["tmp_name"], $str))
 		{
 			echo "Файл с тестом загружен";
+		  header( "Location: list.php" , TRUE, 302);
 		}
 		else
 		{
