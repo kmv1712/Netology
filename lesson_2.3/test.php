@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +136,11 @@
 			}
 		}
 		else {
+		  ob_start();
 			echo "Тест не выбран";
+		  http_response_code(404);
+      echo 'Cтраница не найдена!';
+      exit(1);
 		}
 // echo '<pre>';
 // var_dump($_SERVER);
