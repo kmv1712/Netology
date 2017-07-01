@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,14 +23,12 @@
 			$name = "test.php?name=test\ $v";
 			$str = str_replace (" ", "", $name);
 			echo "<a href='$str'>" . "$v" .'</a>'. "<br>";
-	 	}
-		else { 
 		}
 	}
-// echo "<pre>";
-// print_r($_SERVER);
-// echo "</pre>";
-?>
+
+	?>
+
+	
 </body>
 </html>
 

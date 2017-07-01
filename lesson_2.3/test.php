@@ -7,14 +7,14 @@
 <style>
 	
 	ficaption {
-		top: 380px;
+		top: 280px;
 		position: absolute;
 		align-content: center;
 		left: 243px;
 	}
 
 	p {
-		top: 426px;
+		top: 326px;
 		position: absolute;
 		align-content: center;
 		left: 181px;
@@ -22,92 +22,126 @@
 </style>
 <body>
 
-	<?php 
-  // error_reporting(E_ALL);
-  // echo $_GET['name'];
-	$list = $_GET['name'];
 
-	$textJson = file_get_contents($list);
-	$textJson = json_decode ( $textJson, true);
+	<?php 
+	// error_reporting(E_ALL);
+	// echo $_GET['name'];
+
+	if ($_GET['name'])
+	{
+		$textJson = file_get_contents($_GET['name']);
+		if (strlen($textJson) > 1) 
+			{	$textJson = json_decode ( $textJson, true);
 	// echo '<pre>';
 	// echo print_r($textJson);
 	// echo '</pre>';
-	?>
-
-	<h3><?php echo $textJson[0]["nameTest"]; ?></h3>
+				?>
 
 
-	<form action="" method="POST">	
-		<label> Введите ваше имя: <input type="text" size="40" name = "name"></label>
-		<?php 
-		foreach ($textJson as  $k=>$v) {
-			echo '<fieldset>';
-			$textJsonK = $textJson["$k"]["quetion"];
-      // echo "$textJsonK" . '<br>';
-			echo '<legend>'."$textJsonK".'</legend>';
 
-			foreach ($textJson[$k]["version"] as  $value) {
-				echo '<label> <input type="radio"'."name=q$k".' value = '."$value".'>'. "$value" . '</label>';
+
+				<form action="" method="POST">	
+					<label> Введите ваше имя: <input type="text" size="40" name = "name"></label>
+
+					<?php 
+					foreach ($textJson as  $k=>$v) {
+						echo '<fieldset>';
+						$textJsonK = $v['quetion'];
+		// echo "$textJsonK" . '<br>';
+
+						echo '<legend>'. $textJsonK .'</legend>';
+
+						foreach ($v['version'] as  $value) {
+							echo "<label> <input type = radio name = q$k" . ' value = '. $value .'>'. $value . '</label>';
+						}
+						echo '</fieldset>';		
+					}
+					?>
+
+					<input type="submit" value="Отправить">
+				</form>
+
+				<?php 
+				$correctAnswer = 0; 
+				$fallsAnswer = 0;
+
+				if ($_SERVER["REQUEST_METHOD"] == "POST") {
+					$name = $_POST['name'];
+					if (empty($name)) {
+						echo "<br />";
+						echo 'Введите ваше имя';
+						exit(1);
+					}
+					else{
+
+					foreach ($textJson as  $k=>$v) {
+// echo "<br> q$k <br> ";
+
+						$enterAnswer = $_POST["q$k"];
+						if (isset($_POST["q$k"]) && !empty($_POST["q$k"])) {
+// echo "<br> $enteAnswer <br> ";
+							$answer = $v['answer'];
+// echo "<br> $answer <br>";
+							if ($answer == $enterAnswer){
+								++$correctAnswer;
+// echo "$correctAnswer";
+							}
+							else {
+								++$fallsAnswer;
+							}
+						}
+
+						else {
+							$nuberAnswer = ++ $k ;
+							echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
+						}	
+					}
+
+
+
+
+					$quantityAnswer = ++ $k ;
+// echo "<br> $quantityAnswer <br> ";
+					if ($quantityAnswer == $correctAnswer) {
+						echo "Вы правильно ответили на все вопросы!!!";
+						$point = 5;
+					}
+					else { 
+						if ($correctAnswer == 0) { 
+							echo "Вы ошиблись во всех вопросах";
+							$point = 3;
+						}
+						else {
+							echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
+							$point = 4;
+						}
+
+					}
+
+
+
+					echo "<br>";
+					echo "<figure>";
+					echo "<img height=300px src=png/Certificate.png>";
+					echo "<ficaption>" . $name . "</ficaption>";
+					echo "<p>" . "Вы заработали оценку: " . $point . "</p>"	;
+					echo "</figure>";
+				}
 			}
-			echo '</fieldset>';		
+
+			} 
+			else {
+				echo "Загруженный тест пуст";
+			}
 		}
+		else {
+			echo "Тест не выбран";
+		}
+// echo '<pre>';
+// var_dump($_SERVER);
+//   echo '</pre>';
 
 		?>
-		<input type="submit" value="Отправить">
-	</form>
-
-	<?php 
-    // echo "<br>";
-    // echo $_POST['q1']."<br>";
-    // echo $_POST['q2']."<br>";
-    // echo $textJson[0][answer]."<br>";
-    // echo $textJson[1][answer];
-	$answerOne = $_POST['q0'];
-	$answertwo = $_POST['q1'];
-
-	echo "<br>";
-	$name = $_POST['name'];
-
-	if (empty( $name)) {
-		echo "<br />";
-		echo 'Введите ваше имя';
-		exit(1);
-	}
-	else {
-		if ($answerOne == $textJson[0][answer] && $answertwo ==$textJson[1][answer]){
-			echo " $name все ответы верны, вы молодец!";
-		  $point = 5;
-		  }
-		else {
-			if ($answerOne == $textJson[0][answer] && $answertwo != $textJson[1][answer]){
-				echo " $name вы ошиблись во втором вопросе";
-				$point = 4;}
-			else {
-				if ($answerOne != $textJson[0][answer] && $answertwo == $textJson[1][answer]){
-					echo " $name вы ошиблись в первом вопросе";
-				  $point = 4;
-				}
-				else {
-					echo " $name вы ошиблись во всех вопросах";
-					$point = 3;
-				}
-			}
-		}
-	}
-
-// echo "<pre>";
-//  print_r($_SERVER);
-//  echo "</pre>";
-
-	?>
-	<br>
-	<figure>
-		<img height="300px" src="png/Certificate.png">
-		<ficaption><?php echo "$name"; ?></ficaption>	
-		<p><?php echo "Вы заработали оценку $point"; ?></p>	
-	</figure>
-
-
-</body>
-</html>
+	</body>
+	</html>
 

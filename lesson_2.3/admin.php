@@ -1,50 +1,39 @@
-<?php  ob_start() ?><!--  Использую OPEN Server и поэтому вставил эту функию для работы кода output_buffering изменить в open server не удалось -->
- <!DOCTYPE html>
- <html lang="ru">
- <head>
- 	<meta charset="UTF-8">
- 	<title>Document</title>
- </head>
- <body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
 
- 	<form method="POST" enctype="multipart/form-data">
- 		Файл <input type="file" name="myfile" ><br/>
- 		<input type="submit" value="Отправить">
+	<form method="POST" enctype="multipart/form-data">
+		Файл <input type="file" name="myfile" ><br/>
+		<input type="submit" value="Отправить">
+	</form>
 
- 	</form>
-
- 	<?php 
-
- 	error_reporting(E_ALL);
-
+	<?php 
+	// error_reporting(E_ALL);
 	// echo '<pre>';
 	// echo print_r($_FILES);
 	// echo '</pre>';
- 	if (isset($_FILES['myfile']) && !empty($_FILES['myfile']['name']))
- 	{
- 		$name = 'test\  '. $_FILES["myfile"]["name"];
- 		$str = str_replace (" ", "", $name);
- 		if ($_FILES["myfile"]["error"] == UPLOAD_ERR_OK &&
- 			move_uploaded_file($_FILES["myfile"]["tmp_name"], $str))
- 		{
- 			echo "Файл с тестом загружен";
- 			header('Location: list.php', TRUE, 302); 
- 			exit;
+	if (isset($_FILES['myfile']) && !empty($_FILES['myfile']['name']))
+	{
+		$name = 'test\  '. $_FILES["myfile"]["name"];
+		$str = str_replace (" ", "", $name);
+		if ($_FILES["myfile"]["error"] == UPLOAD_ERR_OK &&
+			move_uploaded_file($_FILES["myfile"]["tmp_name"], $str))
+		{
+			echo "Файл с тестом загружен";
+		}
+		else
+		{
+			echo "Ошибка: Файл с тестом не загружен";
+		}
+	}
 
- 		}
- 		else
- 		{
-			// echo "Ошибка: Файл с тестом не загружен";
-			// header('Location: list.php', TRUE, 302);
+	?>
 
+	<a href="list.php">Перейти к списку тестов</a>
 
- 		}
- 	}
-
-
-
-
-// 	<a href="list.php">Перейти к списку тестов</a>
-
-// </body>
-// </html>
+</body>
+</html>
