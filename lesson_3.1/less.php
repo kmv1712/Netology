@@ -1,64 +1,81 @@
-<!-- 1) Инкапсуляции - это размещение элементов в одном месте. (в капсуле)
-2) Плюс объектов в том, что код более понятен и структурирован, минус  более трудоемкий.
-3)  -->
 
 <?php 
 
-Class Car 
+class Car 
 {
-	public $name; 
-	public $model;
-	public $price; 
-  public $colore; 
+	public function __construct($name, $model, $price, $colore)
+	{
+		$this -> name =  $name;
+		$this -> model =  $model;
+		$this -> price =  $price;
+		$this -> colore =  $colore;
+	}
+
+
+	public function getClass ()
+	{
+		echo $this -> name . PHP_EOL;
+		echo $this -> model . PHP_EOL;
+		echo $this -> price . PHP_EOL;
+		echo $this -> colore . PHP_EOL;
+		echo "<br>";
+	}
 } 
 
 
-$carOne = new Car();
-$carOne -> name = 'BMW';
-$carOne -> model = 'A5';
-$carOne -> price = 300000;
-$carOne -> colore = 'red';
-print_r($carOne);
+$carOne = new Car('BMW','A5', 300000, 'red');
+$carOne-> getClass ();
 
-echo "<br>";
-$carTwo = new Car();
-$carTwo -> name = 'Audi';
-$carTwo -> model = 'A6';
-$carTwo -> price = 700000;
-$carTwo -> colore = 'black';
-print_r($carTwo);
-echo "<br>";
+$carTwo = new Car('Audi','A6', 700000, 'black');
+$carTwo-> getClass ();
 
-Class TV 
+
+
+class TV 
 {
-	public $brand;
-	public $model;
-	public $price; 
-  public $diagonal; 
+
+	public function __construct($brand, $model, $price, $diagonal)
+	{
+		$this -> brand =  $brand;
+		$this -> model =  $model;
+		$this -> price =  $price;
+		$this -> diagonal =  $diagonal;
+	}
+
+
+	public function getClass ()
+	{
+		echo $this -> brand . PHP_EOL;
+		echo $this -> model . PHP_EOL;
+		echo $this -> price . PHP_EOL;
+		echo $this -> diagonal . PHP_EOL;
+		echo "<br>";
+	}
 } 
 
 
-$tvOne = new TV();
-$tvOne -> brand = 'Asus';
-$tvOne -> model = 'W95';
-$tvOne -> price = 20000;
-$tvOne -> diagonal = '37';
-print_r($tvOne);
+$tvOne = new TV('Asus', 'W95', 20000, '37');
+$tvOne ->getClass ();
 
-echo "<br>";
-$tvTwo = new TV();
-$tvTwo -> brand = 'Tohiba';
-$tvTwo -> model = 'A98';
-$tvTwo -> price = 30000;
-$tvTwo -> diagonal = '40';
-print_r($tvTwo);
-echo "<br>";
 
-Class BallPen 
+$tvTwo = new TV('Tohiba', 'A98', 30000, '40');
+$tvTwo ->getClass ();
+
+
+class BallPen 
 {
 	public $brand;
 	public $colore;
 	public $price; 
+
+
+	public function getClass ()
+	{
+		echo $this -> brand . PHP_EOL;
+		echo $this -> colore . PHP_EOL;
+		echo $this -> price . PHP_EOL;
+		echo "<br>";
+	}
 } 
 
 
@@ -67,23 +84,29 @@ $ballPenOne -> brand = 'Pilot';
 $ballPenOne -> colore = 'black';
 $ballPenOne -> price = 70;
 
-print_r($ballPenOne);
+$ballPenOne -> getClass ();
 
-echo "<br>";
 $ballPenTwo = new BallPen();
 $ballPenTwo -> brand = 'Bloma';
 $ballPenTwo -> colore = 'blue';
 $ballPenTwo -> price = 50;
 
-print_r($ballPenTwo);
+$ballPenTwo -> getClass ();
 
-echo "<br>";
 
-Class Duck 
+class Duck 
 {
 	public $gender;
 	public $colore;
 	public $old; 
+
+	public function getClass ()
+	{
+		echo $this -> gender . PHP_EOL;
+		echo $this -> colore . PHP_EOL;
+		echo $this -> old . PHP_EOL;
+		echo "<br>";
+	}
 } 
 
 
@@ -92,37 +115,42 @@ $duckOne -> gender = 'male';
 $duckOne -> colore = 'brown';
 $duckOne -> old = 3;
 
-print_r($duckOne);
+$duckOne-> getClass ();
 
-echo "<br>";
+
 $duckTwo = new Duck();
 $duckTwo -> gender = 'female';
 $duckTwo -> colore = 'gray';
 $duckTwo -> old = 4;
 
-print_r($duckTwo);
+$duckTwo-> getClass ();
 
-Class Product 
+class Product 
 {
 	public $nameProduct;
 	public $price; 
 	public $quantity;
 
+
+	public function getClass ()
+	{
+		echo $this -> nameProduct . PHP_EOL;
+		echo $this -> price . PHP_EOL;
+		echo $this -> quantity . PHP_EOL;
+		echo "<br>";
+	}
 } 
 
-echo "<br>";
+
 $productOne = new Product();
 $productOne -> nameProduct = 'J7';
 $productOne -> price = 30;
 $productOne -> quantity = 4;
+$productOne -> getClass ();
 
-print_r($productOne);
-
-echo "<br>";
 $productTwo = new Product();
 $productTwo -> nameProduct = 'Lipton';
 $productTwo -> price = 40;
 $productTwo -> quantity = 4;
-
-print_r($productTwo);
+$productTwo -> getClass ();
 ?>
