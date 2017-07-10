@@ -119,20 +119,27 @@
 
 					}
 
+        echo "<br>";
+        echo "<img src = Certificate.php>";
 
-
-					echo "<br>";
-					echo "<figure>";
-					echo "<img height=300px src=png/Certificate.png>";
-					echo "<ficaption>" . $name . "</ficaption>";
-					echo "<p>" . "Вы заработали оценку: " . $point . "</p>"	;
-					echo "</figure>";
+        
+					// echo "<br>";
+					// echo "<figure>";
+					// echo "<img height=300px src=png/Certificate.png>";
+					// echo "<ficaption>" . $name . "</ficaption>";
+					// echo "<p>" . "Вы заработали оценку: " . $point . "</p>"	;
+					// echo "</figure>";
 				}
 			}
 
 			} 
 			else {
 				echo "Загруженный тест пуст";
+				ob_start();
+			echo "Тест не выбран";
+		  http_response_code(404);
+      echo 'Cтраница не найдена!';
+      exit(1);
 			}
 		}
 		else {
