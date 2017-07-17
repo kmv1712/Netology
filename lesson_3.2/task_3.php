@@ -1,6 +1,7 @@
 <?php header("Content-Type: text/html; charset=utf-8");
+// <!-- 2) Интерфейсы содержат только методы без их реализации, для создания интерфейсов необходимо знать свойства объектов. -->
 
-class ParentClass
+abstract class ParentClass
 { 
 	public $name;
 	public $price;
@@ -13,11 +14,6 @@ class ParentClass
 
 class Car extends ParentClass
 {
-	// public $name; 
-	public $model;
-	public $price; 
-	public $colore; 
-
 	public function printObjectCar() {
 		echo $this -> model . PHP_EOL;
 		echo $this -> colore . PHP_EOL;
@@ -100,64 +96,58 @@ $ballPenTwo -> printObjectBallPen();
 
 echo "<br>";
 
-class Duck extends ParentClass 
+interface DuckInterface 
 {
+	public function duckFunction($gender, $colore, $old);
+}
 
-	public $gender;
-	public $colore;
-	public $old; 
-  public function printObjectDuck() {
-		echo $this -> gender . PHP_EOL;
-		echo $this -> colore . PHP_EOL;
-		echo $this -> old . PHP_EOL;
-      } 
+class Duck implements DuckInterface  
+{
+	public function duckFunction($gender, $colore, $old)
+	{
+		echo $this -> gender . ' ' . $this -> colore . ' ' . $this -> old ;
+}
 } 
 
-
 $duckOne = new Duck();
-$duckOne -> name = 'Duck';
 $duckOne -> gender = 'male';
 $duckOne -> colore = 'brown';
 $duckOne -> old = 3;
-$duckOne -> price = 12000;
-$duckOne -> printObject();
-$duckOne -> printObjectDuck();
+$duckOne -> duckFunction($gender, $colore, $old);
 
 echo "<br>";
 $duckTwo = new Duck();
-$duckTwo -> name = 'Mallard';
 $duckTwo -> gender = 'female';
 $duckTwo -> colore = 'gray';
 $duckTwo -> old = 4;
-$duckTwo -> price = 16000;
-$duckTwo -> printObject();
-$duckTwo -> printObjectDuck();
+$duckTwo -> duckFunction($gender, $colore, $old);;
 
-
-class Product extends ParentClass 
+interface ProductInterface 
 {
-	public $quantity;
-public function printObjectProduct() {
-		echo $this -> quantity . PHP_EOL;
-		
-      } 
+	public function productFunction($nameProduct, $price, $quantity);
+}
+
+class Product  implements ProductInterface  
+{
+	public function productFunction($nameProduct, $price, $quantity)
+	{
+		echo $this -> nameProduct . ' ' . $this -> price . ' ' . $this -> quantity ;
+  }
 } 
 
 echo "<br>";
 $productOne = new Product();
-$productOne -> name= 'J7';
+$productOne -> nameProduct = 'J7';
 $productOne -> price = 30;
 $productOne -> quantity = 4;
-$productOne -> printObject();
-$productOne -> printObjectProduct();
-
+$productOne -> productFunction($nameProduct, $price, $quantity);
 
 echo "<br>";
 $productTwo = new Product();
-$productTwo -> name = 'Lipton';
+$productTwo -> nameProduct = 'Lipton';
 $productTwo -> price = 40;
 $productTwo -> quantity = 4;
-$productTwo -> printObject();
-$productTwo -> printObjectProduct();
+$productTwo -> productFunction($nameProduct, $price, $quantity);
+
 
 ?>
