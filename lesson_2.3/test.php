@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +61,7 @@
 
 					<input type="submit" value="Отправить">
 				</form>
-
+				
 				<?php 
 				$correctAnswer = 0; 
 				$fallsAnswer = 0;
@@ -75,85 +75,98 @@
 					}
 					else{
 
-					foreach ($textJson as  $k=>$v) {
+						foreach ($textJson as  $k=>$v) {
 // echo "<br> q$k <br> ";
 
-						$enterAnswer = $_POST["q$k"];
-						if (isset($_POST["q$k"]) && !empty($_POST["q$k"])) {
+							$enterAnswer = $_POST["q$k"];
+							if (isset($_POST["q$k"]) && !empty($_POST["q$k"])) {
 // echo "<br> $enteAnswer <br> ";
-							$answer = $v['answer'];
+								$answer = $v['answer'];
 // echo "<br> $answer <br>";
-							if ($answer == $enterAnswer){
-								++$correctAnswer;
+								if ($answer == $enterAnswer){
+									++$correctAnswer;
 // echo "$correctAnswer";
+								}
+								else {
+									++$fallsAnswer;
+								}
+							}
+
+							else {
+								$nuberAnswer = ++ $k ;
+								echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
+							}	
+						}
+
+
+
+
+						$quantityAnswer = ++ $k ;
+// echo "<br> $quantityAnswer <br> ";
+						if ($quantityAnswer == $correctAnswer) {
+							echo "Вы правильно ответили на все вопросы!!!";
+							$point = 5;
+						}
+						else { 
+							if ($correctAnswer == 0) { 
+								echo "Вы ошиблись во всех вопросах";
+								$point = 3;
 							}
 							else {
-								++$fallsAnswer;
+								echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
+								$point = 4;
 							}
 						}
 
-						else {
-							$nuberAnswer = ++ $k ;
-							echo "Выберите правильный ответ на вопрос № $nuberAnswer <br>";
-						}	
-					}
+        // echo $_POST['name'];
+        // $name = $_POST['name'];
+if ($name < 15) {
+
+$_SESSION['name'] = $name;
+$_SESSION['point'] = $point;
 
 
 
+echo "<br>";
+echo "<img src = Certificate.php>";
+}
+else {echo '<br> У вас слишком длинное имя';}
 
-					$quantityAnswer = ++ $k ;
-// echo "<br> $quantityAnswer <br> ";
-					if ($quantityAnswer == $correctAnswer) {
-						echo "Вы правильно ответили на все вопросы!!!";
-						$point = 5;
-					}
-					else { 
-						if ($correctAnswer == 0) { 
-							echo "Вы ошиблись во всех вопросах";
-							$point = 3;
-						}
-						else {
-							echo "Вы правильно ответили на $correctAnswer вопрос и ошиблись в $fallsAnswer!!!";
-							$point = 4;
-						}
 
-					}
-
-        echo "<br>";
-        echo "<img src = Certificate.php>";
-
-        
 					// echo "<br>";
 					// echo "<figure>";
 					// echo "<img height=300px src=png/Certificate.png>";
 					// echo "<ficaption>" . $name . "</ficaption>";
 					// echo "<p>" . "Вы заработали оценку: " . $point . "</p>"	;
 					// echo "</figure>";
-				}
-			}
+}
+}
 
-			} 
-			else {
-				echo "Загруженный тест пуст";
-				ob_start();
-			echo "Тест не выбран";
-		  http_response_code(404);
-      echo 'Cтраница не найдена!';
-      exit(1);
-			}
-		}
-		else {
-		  ob_start();
-			echo "Тест не выбран";
-		  http_response_code(404);
-      echo 'Cтраница не найдена!';
-      exit(1);
-		}
+} 
+else {
+	echo "Загруженный тест пуст";
+	ob_start();
+	echo "Тест не выбран";
+	http_response_code(404);
+	echo 'Cтраница не найдена!';
+	exit(1);
+}
+}
+
+else {
+	ob_start();
+	echo "Тест не выбран";
+	http_response_code(404);
+	echo 'Cтраница не найдена!';
+	exit(1);
+}
 // echo '<pre>';
 // var_dump($_SERVER);
 //   echo '</pre>';
 
-		?>
-	</body>
-	</html>
+?>
+
+
+</body>
+</html>
 
