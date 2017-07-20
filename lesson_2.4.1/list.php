@@ -22,6 +22,7 @@ if ($_SESSION['user']['role'] == 'user')
 	if ($_POST['guest']) {
 		$guest = trim(strip_tags($_POST['guest']));
 		echo "<h2>Здравствуйте $guest, выберите тест: </h2>";
+		$_SESSION['guest'] = $_POST['guest'];
 	}
 
 	$files = scandir('test'); 

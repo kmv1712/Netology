@@ -70,7 +70,15 @@ require_once 'core/functions.php';
 				$fallsAnswer = 0;
 
 				if ($_SERVER["REQUEST_METHOD"] == "POST") {
-					$name = getAuthorizedUser()['name'];
+             if (!empty(getAuthorizedUser()['name']))
+             {
+             	$name = getAuthorizedUser()['name'];
+             }
+             else if (!empty($_SESSION['guest'])){
+             		$name = $_SESSION['guest'];
+             }
+
+					
 					if (empty($name)) {
 						echo "<br />";
 						echo 'Введите ваше имя';
@@ -125,7 +133,7 @@ require_once 'core/functions.php';
         // $name = $_POST['name'];
 if ($name < 15) {
 
-$_SESSION['name'] = getAuthorizedUser()['name'];
+$_SESSION['name'] = $name;
 $_SESSION['point'] = $point;
 
 
