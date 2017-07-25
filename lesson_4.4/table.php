@@ -33,24 +33,16 @@
 
 	<?php
 	$nameBase = trim(strip_tags($_POST['nameBase']));
-	$link = mysql_connect('localhost', 'root');
+	$pdo = new PDO("mysql:host 	= localhost; charset = utf8", "root");
 
 	if (!empty($nameBase)){
-	if (!$link) {
-		die('Ошибка соединения: ' . mysql_error());
-	}
-	else { echo "";}
-	
-	$sql = "SHOW TABLES FROM $nameBase";
-	$result = mysql_query($sql);
+	  $nameBase = $_POST['nameBase'];
+		$sql = "SHOW TABLES FROM $nameBase";
+		$result = $pdo -> query ($sql);
 
-	if (!$result) {
-		echo "Ошибка базы, не удалось получить список таблиц\n";
-		echo 'Ошибка MySQL: ' . mysql_error();
-		exit;
-	}
 
-	while ($row = mysql_fetch_row($result)) {
+  
+	foreach ($result as $row){
 		echo "<br>Таблица в $nameBase: <a href=\"?nameBase=$nameBase&nameTable=".$row[0] ."\"> $row[0]</a><br>";
 	}
 	} 
@@ -58,7 +50,7 @@
   $nameTable = $_GET['nameTable'];
   $nameBase = $_GET['nameBase'];
 
-  if ($nameTable and $nameBase){
+  if (isset($nameTable) and isset($nameBase)){
   $pdo = new PDO("mysql:host 	= localhost; dbname=$nameBase; charset = utf8", "root");
 	$sql = "DESCRIBE $nameTable";
 	$stmt = $pdo -> query ($sql);

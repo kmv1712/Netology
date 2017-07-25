@@ -18,19 +18,13 @@ form{
 <body>
 	<?php 
 // test();
-	if ($_POST['nameBase']) {
+	if (isset($_POST['nameBase'])) {
 		$_POST['nameBase'] = trim(strip_tags($_POST['nameBase']));
-		// echo $_POST['nameBase'];
-
-		$link = mysql_connect('localhost', 'root');
-		if (!$link) {
-			die('Ошибка соединения: ' . mysql_error());
-		}
-		// else { echo "OK";}
+    $pdo = new PDO("mysql:host 	= localhost; charset = utf8", "root");
 		$nameBase = $_POST['nameBase'];
 		$sql = "CREATE DATABASE $nameBase";
-		mysql_query($sql, $link);
-		mysql_query($sql, $link);
+		$pdo -> query ($sql);
+	
 	}
 
 
