@@ -1,6 +1,8 @@
 <?php ob_start(); 
-include __DIR__ . "/function.php";?>
-
+include __DIR__ . "/function.php";
+include __DIR__ . "/host.php";
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +34,7 @@ include __DIR__ . "/function.php";?>
 		<input type="text" name="nameBase">
 	</form>
 <?php 
+getList();
 getTable();
  ?>
 </body>

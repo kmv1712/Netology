@@ -1,5 +1,6 @@
 <?php 
 include __DIR__ . "/function.php";
+include __DIR__ . "/host.php";
 // error_reporting(E_ALL);
  ?>
 <!DOCTYPE html>
