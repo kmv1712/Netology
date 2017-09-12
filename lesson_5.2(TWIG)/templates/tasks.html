@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<h1>Здравствуйте, user! Вот ваш список дел:</h1>
+
+<form action="">
+	<input type="text">
+	<input type="submit" value = "Добавить">
+</form>
+
+
+<div id="tasks">
+	<table>
+		<thead>
+			<tr>
+				<th>Описание задачи</th>
+				<th>Дата добавления</th>
+				<th>Статус</th>
+				<th>Ответственный</th>
+				<th>Автор</th>
+				<th>Закрепить задачу за пользователем</th>
+			</tr>
+		</thead>
+		
+		{% for task in tasks %}
+		<tbody>
+			<tr>
+				<th>{{task.number}}</th>
+				<th>{{task.title}}</th>
+				<th>{{task.date}}</th>
+				<th>{{task.number}}</th>
+				<th>{{task.title}}</th>
+				<th>{{task.date}}</th>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
+
+
+{% block others%}
+<h2>Также, посмотрите, что от Вас требуют другие люди:</h2>
+
+<div id="tasks">
+	<table>
+		<thead>
+			<tr>
+				<th>Описание задачи</th>
+				<th>Дата добавления</th>
+				<th>Статус</th>
+				<th>Ответственный</th>
+				<th>Автор</th>
+				<th>Закрепить задачу за пользователем</th>
+			</tr>
+		</thead>
+{% endblock %}

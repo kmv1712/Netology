@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<style>
+		table { 
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		td, th {
+			border: 1px solid #ccc;
+			padding: 5px;
+		}
+
+		table thead {
+			background: #eee;
+		}
+
+		form{
+			padding: 5px;
+		}
+
+	</style>
+<body>
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+<div id="others people">
+    {% block others%}
+    {% endblock %}
+</div>
+
+</body>
+</html>
+
+
