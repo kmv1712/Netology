@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+
+{% block task %}
+
+	<table>
+		<thead>
+			<tr>
+				<th>Описание задачи</th>
+				<th>Дата добавления</th>
+				<th>Статус</th>
+				<th>Ответственный</th>
+				<th>Автор</th>
+				<th>Закрепить задачу за пользователем</th>
+			</tr>
+		</thead>
+		
+		{% for task in tasks %}
+
+		<tbody>
+			<tr>
+				<th>{{task.number}}</th>
+				<th>{{task.title}}</th>
+				<th>{{task.date}}</th>
+				<th>{{task.number}}</th>
+				<th>{{task.title}}</th>
+				<th>{{task.date}}</th>
+			</tr>
+
+
+			
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

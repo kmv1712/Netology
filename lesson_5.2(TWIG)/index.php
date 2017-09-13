@@ -1,10 +1,14 @@
 <?php 
-require_once 'Twig\Autoloader.php';
-Twig_Autoloader::register();
 
-$loader = new Twig_Loader_Filesystem('templates');
+header("Content-Type:text/html;charset=UTF8");
+include 'config.php';
+include 'functions.php';
 
-$twig = new Twig_Environment($loader, array('cache' => 'compilation_cache', 'auto_reload' => true));
+$pdo = new PDO("mysql:host 	= localhost; dbname=tasks; charset = utf8", "root");
+$sql = "DESCRIBE task";
+$stmt = $pdo -> query ($sql);
+
+
 
 $tasks = array(
 	array('number' => 'Книга 1', 'title' => 'Гарри Поттер и философский камень', 'date' => '30.06.1997'),
@@ -13,6 +17,8 @@ $tasks = array(
 
 );
 
+$templ = $twig -> loadTemplate ('main_table_task.html');
+echo $templ -> render(array('tasks' => $tasks, 'stmt' => $stmt));
 
-echo $twig->render('tasks.html', array('tasks' => $tasks));
+// echo $twig->render('books.html', array('books' => $books));
 ?>
