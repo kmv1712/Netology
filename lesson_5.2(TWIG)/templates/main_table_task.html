@@ -2,34 +2,53 @@
 
 {% block task %}
 
-	<table>
-		<thead>
-			<tr>
-				<th>Описание задачи</th>
-				<th>Дата добавления</th>
-				<th>Статус</th>
-				<th>Ответственный</th>
-				<th>Автор</th>
-				<th>Закрепить задачу за пользователем</th>
-			</tr>
-		</thead>
-		
-		{% for task in tasks %}
-
-		<tbody>
-			<tr>
-				<th>{{task.number}}</th>
-				<th>{{task.title}}</th>
-				<th>{{task.date}}</th>
-				<th>{{task.number}}</th>
-				<th>{{task.title}}</th>
-				<th>{{task.date}}</th>
-			</tr>
+<table>
+	<tdead>
+		<tr>
+			<td>Описание задачи</td>
+			<td>Дата добавления</td>
+			<td>Статус</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>Ответственный</td>
+			<td>Автор</td>
+			<td>Закрепить задачу за пользователем</td>
+		</tr>
+	</tdead>
 
 
-			
-			{% endfor %}
-		</tbody>
-	</table>
+		{% for d in data %}
+		<tr>
+			<td>  {{d.description|escape}}</td>
+			<td>  {{d.date_added|escape}}</td>
+
+			{% if d.is_done == 1 %}
+			<td>В процессе</td>
+			{% else %}
+			<td>Выполнено</td>
+			{% endif %}
+
+ 
+ 	<td><a name=\"edit\" href=\"lesson_4.2.php?edit={{d.id}}">Изменить</a></td>
+ 	<td><a name=\"done\" href=\"lesson_4.2.php?done={{d.id}}">Выполнить</a></td>
+ 	<td><a name=\"del\" href=\"lesson_4.2.php?del={{d.id}}">Удалить</a></td>
+
+
+
+ 	<td> {{d.user_id|escape}}</td>
+
+ 	<td>  {{d.assigned_user_id|escape}} </td>
+
+ 	<td> Другой пользователь </td> 
+
+ </tr>		
+ {% endfor %}
+
+</table>
+</tbody>
+</table>
 
 {% endblock %}
+
+

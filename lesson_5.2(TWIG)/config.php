@@ -11,25 +11,8 @@ $twig = new Twig_Environment($loader,
 		)); 
 
 
-
-try {
-	$dbh = new PDO('mysql:dbname=tasks; host=localhost', 'root');
-} catch (PDOException $e) {
-	echo "Error: Could not connect. " . $e->getMessage();
-}
-
-
-	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-
-return [
-'mysql' => [
-'host' => 'localhost',
-'dbname' => 'tasks',
-'user' => 'root',
-]
-];
-
-
-
+$host = 'localhost';
+$root = 'root';
+$password ='';
+$nameBase = 'tasks';
+$nameTable = 'task';

@@ -29,63 +29,90 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
     {
         // line 4
         echo "
-\t<table>
-\t\t<thead>
-\t\t\t<tr>
-\t\t\t\t<th>Описание задачи</th>
-\t\t\t\t<th>Дата добавления</th>
-\t\t\t\t<th>Статус</th>
-\t\t\t\t<th>Ответственный</th>
-\t\t\t\t<th>Автор</th>
-\t\t\t\t<th>Закрепить задачу за пользователем</th>
-\t\t\t</tr>
-\t\t</thead>
-\t\t
+<table>
+\t<tdead>
+\t\t<tr>
+\t\t\t<td>Описание задачи</td>
+\t\t\t<td>Дата добавления</td>
+\t\t\t<td>Статус</td>
+\t\t\t<td></td>
+\t\t\t<td></td>
+\t\t\t<td></td>
+\t\t\t<td>Ответственный</td>
+\t\t\t<td>Автор</td>
+\t\t\t<td>Закрепить задачу за пользователем</td>
+\t\t</tr>
+\t</tdead>
+
+
 \t\t";
-        // line 17
+        // line 21
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["tasks"]) ? $context["tasks"] : null));
-        foreach ($context['_seq'] as $context["_key"] => $context["task"]) {
-            // line 18
-            echo "
-\t\t<tbody>
-\t\t\t<tr>
-\t\t\t\t<th>";
-            // line 21
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "number", array()), "html", null, true);
-            echo "</th>
-\t\t\t\t<th>";
+        $context['_seq'] = twig_ensure_traversable((isset($context["data"]) ? $context["data"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
             // line 22
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "title", array()), "html", null, true);
-            echo "</th>
-\t\t\t\t<th>";
+            echo "\t\t<tr>
+\t\t\t<td>  ";
             // line 23
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "date", array()), "html", null, true);
-            echo "</th>
-\t\t\t\t<th>";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "description", array()));
+            echo "</td>
+\t\t\t<td>  ";
             // line 24
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "number", array()), "html", null, true);
-            echo "</th>
-\t\t\t\t<th>";
-            // line 25
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "title", array()), "html", null, true);
-            echo "</th>
-\t\t\t\t<th>";
-            // line 26
-            echo twig_escape_filter($this->env, $this->getAttribute($context["task"], "date", array()), "html", null, true);
-            echo "</th>
-\t\t\t</tr>
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "date_added", array()));
+            echo "</td>
 
-
-\t\t\t
 \t\t\t";
+            // line 26
+            if (($this->getAttribute($context["d"], "is_done", array()) == 1)) {
+                // line 27
+                echo "\t\t\t<td>В процессе</td>
+\t\t\t";
+            } else {
+                // line 29
+                echo "\t\t\t<td>Выполнено</td>
+\t\t\t";
+            }
+            // line 31
+            echo "
+ 
+ \t<td><a name=\\\"edit\\\" href=\\\"lesson_4.2.php?edit=";
+            // line 33
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
+            echo "\">Изменить</a></td>
+ \t<td><a name=\\\"done\\\" href=\\\"lesson_4.2.php?done=";
+            // line 34
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
+            echo "\">Выполнить</a></td>
+ \t<td><a name=\\\"del\\\" href=\\\"lesson_4.2.php?del=";
+            // line 35
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
+            echo "\">Удалить</a></td>
+
+
+
+ \t<td> ";
+            // line 39
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "user_id", array()));
+            echo "</td>
+
+ \t<td>  ";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "assigned_user_id", array()));
+            echo " </td>
+
+ \t<td> Другой пользователь </td> 
+
+ </tr>\t\t
+ ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['task'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
-        echo "\t\t</tbody>
-\t</table>
+        // line 47
+        echo "
+</table>
+</tbody>
+</table>
 
 ";
     }
@@ -102,7 +129,7 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
     public function getDebugInfo()
     {
-        return array (  87 => 32,  75 => 26,  71 => 25,  67 => 24,  63 => 23,  59 => 22,  55 => 21,  50 => 18,  46 => 17,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  112 => 47,  100 => 41,  95 => 39,  88 => 35,  84 => 34,  80 => 33,  76 => 31,  72 => 29,  68 => 27,  66 => 26,  61 => 24,  57 => 23,  54 => 22,  50 => 21,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

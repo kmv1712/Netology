@@ -25,7 +25,9 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 </head>
 <body>
 
-<h1>Здравствуйте, user! Вот ваш список дел:</h1>
+<a href=\"templates\\register.html\">Войдите на сайт</a>
+
+<!-- <h1>Здравствуйте, user! Вот ваш список дел:</h1>
 
 <form action=\"\">
 \t<input type=\"text\">
@@ -35,10 +37,10 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
 <div id=\"task\">
 ";
-        // line 18
-        $this->displayBlock('task', $context, $blocks);
         // line 20
-        echo "</div>
+        $this->displayBlock('task', $context, $blocks);
+        // line 22
+        echo "</div> -->
 
 </body>
 </html>
@@ -46,7 +48,7 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 </html>";
     }
 
-    // line 18
+    // line 20
     public function block_task($context, array $blocks = array())
     {
     }
@@ -58,7 +60,7 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
     public function getDebugInfo()
     {
-        return array (  50 => 18,  41 => 20,  39 => 18,  20 => 1,);
+        return array (  52 => 20,  43 => 22,  41 => 20,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
