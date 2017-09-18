@@ -1,7 +1,7 @@
 <?php
 
-/* main.html */
-class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977fbd313 extends Twig_Template
+/* register.html */
+class __TwigTemplate_447ea5589a19c608d1d8d8273c35bbf1422c5c3b69983f55cd10387540113289 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -10,7 +10,6 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
         $this->parent = false;
 
         $this->blocks = array(
-            'task' => array($this, 'block_task'),
         );
     }
 
@@ -24,43 +23,30 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 \t<title>Document</title>
 </head>
 <body>
+\t
+Введите данные для регистрации или войдите, если уже регистрировались:
 
-<!-- <a href=\"templates\\register.html\">Войдите на сайт</a> -->
-
-<h1>Здравствуйте, user! Вот ваш список дел:</h1>
-
-<form action=\"\">
-\t<input type=\"text\">
-\t<input type=\"submit\" value = \"Добавить\">
+<form action=\"\" method=\"POST\">
+\t<input type=\"text\" name=\"login\" placeholder=\"Логин\">
+  <input type=\"password\" name=\"password\" placeholder=\"Пароль\">
+  <input type=\"submit\" name=\"sign_in\" value=\"Вход\">
+  <input type=\"submit\" name=\"register\" value=\"Регистрация\">
 </form>
 
 
-<div id=\"task\">
-";
-        // line 20
-        $this->displayBlock('task', $context, $blocks);
-        // line 22
-        echo "</div>
 
-</body>
-</html>
 </body>
 </html>";
     }
 
-    // line 20
-    public function block_task($context, array $blocks = array())
-    {
-    }
-
     public function getTemplateName()
     {
-        return "main.html";
+        return "register.html";
     }
 
     public function getDebugInfo()
     {
-        return array (  52 => 20,  43 => 22,  41 => 20,  20 => 1,);
+        return array (  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -73,6 +59,6 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "main.html", "W:\\domains\\DZNet\\lesson_5.2(TWIG)\\templates\\main.html");
+        return new Twig_Source("", "register.html", "W:\\domains\\DZNet\\lesson_5.2(TWIG)\\templates\\register.html");
     }
 }
