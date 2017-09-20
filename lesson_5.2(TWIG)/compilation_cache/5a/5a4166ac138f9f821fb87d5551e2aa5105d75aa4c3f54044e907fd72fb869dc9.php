@@ -27,7 +27,10 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
 <!-- <a href=\"templates\\register.html\">Войдите на сайт</a> -->
 
-<h1>Здравствуйте, user! Вот ваш список дел:</h1>
+<h1>Здравствуйте, ";
+        // line 11
+        echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
+        echo "! Вот ваш список дел:</h1>
 
 <form action=\"\">
 \t<input type=\"text\">
@@ -58,9 +61,14 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
         return "main.html";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  52 => 20,  43 => 22,  41 => 20,  20 => 1,);
+        return array (  55 => 20,  46 => 22,  44 => 20,  32 => 11,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

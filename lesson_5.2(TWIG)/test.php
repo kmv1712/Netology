@@ -58,3 +58,28 @@
  echo "</table>";
 ///////////////////////////////////////////////////////////////////////////
  //////////////////////////////////////////////////////////////////////////
+
+
+
+ /////////////////////////// Регистрация 19.09.17.//////////////////////////////////
+if ($_POST and !empty($_POST['login']) and !empty($_POST['register'])){
+	// print_r($_POST);
+	$userLogin = $_POST['login'];
+	$userPassword = $_POST['password'];
+	$pdo = new PDO("mysql:host 	= $host; dbname=$nameBase; charset = utf8", "$root", "$password");
+	$sql = "SELECT id FROM user WHERE login = '$userLogin'";
+	$stmt = $pdo -> query ($sql);
+	$coun = $stmt -> rowCount();
+	// echo "$coun";
+	if ($coun > 0) {
+		echo 'Логин занят, придумайте новый логин';
+	} else {
+		$pdo = new PDO("mysql:host 	= $host; dbname=$nameBase; charset = utf8", "$root", "$password");
+		$sql = "INSERT INTO user VALUES ('',	'$userLogin' , '$userPassword')";
+		$stmt = $pdo -> query ($sql);
+		echo "Вы успешно зарегистрировались на сайте";
+   	}
+}
+else 
+	{echo "Введите логин, пароль";}
+/////////////////////////////////////////////////////////////////////////

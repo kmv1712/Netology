@@ -90,15 +90,15 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
 
 
- \t<td> ";
+ \t<td> <!-- ";
             // line 39
-            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "user_id", array()));
-            echo "</td>
+            echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
+            echo " --></td> <!-- Ответсвенный -->
 
  \t<td>  ";
             // line 41
-            echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "assigned_user_id", array()));
-            echo " </td>
+            echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
+            echo " </td> <!-- Автор -->
 
  \t<td> Другой пользователь </td> 
 
