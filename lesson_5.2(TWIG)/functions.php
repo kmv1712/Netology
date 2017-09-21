@@ -20,3 +20,5 @@ function getTable($user_id, $login, $host, $nameBase, $root, $password, $nameTab
 		));
 }
 
+
+

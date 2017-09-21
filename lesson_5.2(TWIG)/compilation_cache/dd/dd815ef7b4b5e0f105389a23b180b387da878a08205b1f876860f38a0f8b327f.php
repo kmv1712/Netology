@@ -79,14 +79,14 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
             // line 33
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
             echo "\">Изменить</a></td>
- \t<td><a name=\\\"done\\\" href=\\\"lesson_4.2.php?done=";
+ \t<td><a name=done href=\"?id=";
             // line 34
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
-            echo "\">Выполнить</a></td>
- \t<td><a name=\\\"del\\\" href=\\\"lesson_4.2.php?del=";
+            echo "&action=done\">Выполнить</a></td>
+ \t<td><a name =del  href=\"?id=";
             // line 35
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
-            echo "\">Удалить</a></td>
+            echo "&action=delete\">Удалить</a></td>
 
 
 
