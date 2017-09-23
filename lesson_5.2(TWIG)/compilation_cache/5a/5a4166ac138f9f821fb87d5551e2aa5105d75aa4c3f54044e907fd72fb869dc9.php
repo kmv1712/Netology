@@ -31,10 +31,9 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
         // line 11
         echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
         echo "! Вот ваш список дел:</h1>
-
-
 <form action=\"\" method=\"POST\">
-  <input type=\"submit\" value = \"Выйти из аккаунта\"  name = exit>
+  <input type=\"submit\" value = \"Выйти из аккаунта\"  name = \"exit\">
+
 </form>
 
 
@@ -43,15 +42,17 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
   <br>
   <br>
 \t<input type=\"text\" name = textTask>
-\t<input type=\"submit\" value = \"Добавить\"  name = addTask>
+\t<input type=\"submit\" value = \"Добавить\"  name = \"addTask\">
+\t 
 </form>
+
 
 
 <div id=\"task\">
 ";
-        // line 29
+        // line 30
         $this->displayBlock('task', $context, $blocks);
-        // line 31
+        // line 32
         echo "</div>
 
 </body>
@@ -60,7 +61,7 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 </html>";
     }
 
-    // line 29
+    // line 30
     public function block_task($context, array $blocks = array())
     {
     }
@@ -77,7 +78,7 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
     public function getDebugInfo()
     {
-        return array (  64 => 29,  55 => 31,  53 => 29,  32 => 11,  20 => 1,);
+        return array (  65 => 30,  56 => 32,  54 => 30,  32 => 11,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

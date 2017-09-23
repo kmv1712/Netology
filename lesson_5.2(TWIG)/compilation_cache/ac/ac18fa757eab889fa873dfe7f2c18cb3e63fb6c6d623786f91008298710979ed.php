@@ -1,14 +1,14 @@
 <?php
 
-/* main_table_task.html */
-class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc49b00 extends Twig_Template
+/* main_table_task_edit.html */
+class __TwigTemplate_d26c5c09ce3ae4dca8485ea012a92c9fa281be53adb17098d1261484c70844fd extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("main.html", "main_table_task.html", 1);
+        $this->parent = $this->loadTemplate("main.html", "main_table_task_edit.html", 1);
         $this->blocks = array(
             'task' => array($this, 'block_task'),
         );
@@ -28,7 +28,18 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
     public function block_task($context, array $blocks = array())
     {
         // line 4
-        echo "
+        echo "<form action=\"\" method=\"POST\">
+  <input type=\"submit\" value = \"Выйти из аккаунта\"  name = \"exit\">
+</form>
+
+
+<form action=\"\" method=\"POST\">
+  
+  <br>
+  <br>
+\t<input type=\"text\" name = textTask>
+\t<input type=\"submit\" value = \"Сохранить\"  name = \"editTask\">
+</form>
 
 <table>
 \t<tdead>
@@ -47,57 +58,57 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
 
 \t\t";
-        // line 22
+        // line 33
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["data"]) ? $context["data"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["d"]) {
-            // line 23
+            // line 34
             echo "\t\t<tr>
 \t\t\t<td>  ";
-            // line 24
+            // line 35
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "description", array()));
             echo "</td>
 \t\t\t<td>  ";
-            // line 25
+            // line 36
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "date_added", array()));
             echo "</td>
 
 \t\t\t";
-            // line 27
+            // line 38
             if (($this->getAttribute($context["d"], "is_done", array()) == 1)) {
-                // line 28
+                // line 39
                 echo "\t\t\t<td>В процессе</td>
 \t\t\t";
             } else {
-                // line 30
+                // line 41
                 echo "\t\t\t<td>Выполнено</td>
 \t\t\t";
             }
-            // line 32
+            // line 43
             echo "
  
  \t<td><a name=edit href=?id=";
-            // line 34
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
             echo "&action=edit>Изменить</a></td>
  \t<td><a name=done href=\"?id=";
-            // line 35
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
             echo "&action=done\">Выполнить</a></td>
  \t<td><a name =del  href=\"?id=";
-            // line 36
+            // line 47
             echo twig_escape_filter($this->env, $this->getAttribute($context["d"], "id", array()), "html", null, true);
             echo "&action=delete\">Удалить</a></td>
 
 
 
  \t<td> <!-- ";
-            // line 40
+            // line 51
             echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
             echo " --></td> <!-- Ответсвенный -->
 
  \t<td>  ";
-            // line 42
+            // line 53
             echo twig_escape_filter($this->env, (isset($context["login"]) ? $context["login"] : null), "html", null, true);
             echo " </td> <!-- Автор -->
 
@@ -109,7 +120,7 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['d'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 48
+        // line 59
         echo "
 </table>
 </tbody>
@@ -120,7 +131,7 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
     public function getTemplateName()
     {
-        return "main_table_task.html";
+        return "main_table_task_edit.html";
     }
 
     public function isTraitable()
@@ -130,7 +141,7 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
     public function getDebugInfo()
     {
-        return array (  113 => 48,  101 => 42,  96 => 40,  89 => 36,  85 => 35,  81 => 34,  77 => 32,  73 => 30,  69 => 28,  67 => 27,  62 => 25,  58 => 24,  55 => 23,  51 => 22,  31 => 4,  28 => 3,  11 => 1,);
+        return array (  124 => 59,  112 => 53,  107 => 51,  100 => 47,  96 => 46,  92 => 45,  88 => 43,  84 => 41,  80 => 39,  78 => 38,  73 => 36,  69 => 35,  66 => 34,  62 => 33,  31 => 4,  28 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -143,6 +154,6 @@ class __TwigTemplate_11f8ba54114ce6e504e24ccbce979abbd8d45cc2955933caafea23051cc
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "main_table_task.html", "W:\\domains\\DZNet\\lesson_5.2(TWIG)\\templates\\main_table_task.html");
+        return new Twig_Source("", "main_table_task_edit.html", "W:\\domains\\DZNet\\lesson_5.2(TWIG)\\templates\\main_table_task_edit.html");
     }
 }
