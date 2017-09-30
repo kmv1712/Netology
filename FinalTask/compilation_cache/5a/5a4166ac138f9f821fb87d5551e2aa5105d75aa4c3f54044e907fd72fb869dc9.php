@@ -32,14 +32,15 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 </head>
 <body>
 \t<header>
-\t\t<h1>FAQ</h1>
+\t\t<h1> Вы не нашли ответ на свой вопрос? Задайте его мне.</h1>
 \t</header>
-
+ 
+    
 
 \t";
-        // line 20
+        // line 21
         $this->displayBlock('questions', $context, $blocks);
-        // line 22
+        // line 23
         echo "
 \t
 \t<script src=\"lib/js/jquery-2.1.1.js\"></script>
@@ -49,10 +50,10 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 </html>";
     }
 
-    // line 20
+    // line 21
     public function block_questions($context, array $blocks = array())
     {
-        // line 21
+        // line 22
         echo "\t";
     }
 
@@ -63,7 +64,7 @@ class __TwigTemplate_c3481f6eb3baaa69032cdd4de58ecda4c78f35a2ca5db0576d5ecc3977f
 
     public function getDebugInfo()
     {
-        return array (  56 => 21,  53 => 20,  43 => 22,  41 => 20,  20 => 1,);
+        return array (  57 => 22,  54 => 21,  44 => 23,  42 => 21,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

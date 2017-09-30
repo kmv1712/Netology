@@ -1,5 +1,21 @@
 {% extends "main.html" %}
 
+{% block userSelectCategorie %}	
+<form action="" method= "POST">
+	<p>Введите свое имя</p>
+	<input type="text" name = "userName">
+	<p>Введите адрес эл.почты</p>
+	<input type="text" name = "userMail">
+	<p><select name="userSelectCategorie">
+		<option selected = "selected">Выберете категорию</option>
+		{% for d in data %}
+		<option name ="{{d.categorie|escape}}">{{d.categorie|escape|capitalize}}</option>
+		{% endfor %}
+	</select></p>
+</form>
+{% endblock %}
+
+
 {% block questions %}	
 <section class="cd-faq">
 
@@ -14,15 +30,50 @@
 		<ul id="{{d.categorie|escape}}" class="cd-faq-group">
 			<li class="cd-faq-title"><h2>{{d.categorie|escape}}</h2></li>
 			{% for q in questions %}
+
+
+
 			{% if q.categorie|escape == d.categorie|escape%}
+
+			{% if q.categorie|escape == userQuestion %}
+				<li>
+						<a class="cd-faq-trigger" href="#0">У вас есть вопрос? Задайте его мне</a>
+						<div class="cd-faq-content">
+							<form action="" method= "POST">
+								<p>Введите свое имя</p>
+								<input type="text" name = "userName">
+								<p>Введите адрес эл.почты</p>
+								<input type="text" name = "userMail">
+									<p>Выберете категорию</p>
+								  <p><select name="userSelectCategorie">
+									<option selected = "selected" placeholder = "Выберете категорию"></option>
+									{% for d in data %}
+									<option name ="{{d.categorie|escape}}">{{d.categorie|escape|capitalize}}</option>
+									{% endfor %}
+								</select></p>
+								<p>Введите ваш вопрос</p>
+							  <textarea name="userFormQuestion" cols="40" rows="8"></textarea></p>
+								<br>
+								<br>
+								<input type="submit" value = "Отправить вопрос">
+								<input type="reset" value="Очистить"></p>
+							</form>
+             
+							<p>{{sendFormUser}}</p>
+						</div> 
+					</li>
+	    <a href="#0" class="cd-close-panel">Close</a>
+			{% else %}
+
 			<li>
 				<a class="cd-faq-trigger" href="#0">{{q.question|escape}}</a>
 				<div class="cd-faq-content">
 					<p>{{q.answer|escape}}</p>
 				</div> <!-- cd-faq-content -->
 			</li>
+
 			{% endif %}
-			
+			{% endif %}
 
 			{% endfor %}
 		</ul> <!-- cd-faq-group -->
@@ -32,3 +83,5 @@
 </section> <!-- cd-faq -->
 
 {% endblock %}
+
+
