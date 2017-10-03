@@ -1,0 +1,46 @@
+{% extends "admin.html" %}
+
+
+{% block list_admin %}
+
+<!-- Список администраторов -->
+<h5>Здраствуйте {{adminLogin}}</h5>
+
+<div class="row"><div class= "col s12 "><h5>Список администраторов</h5></div></div>
+
+<div class="col s10">
+
+	<table class = "bordered">
+		<thead>
+			<tr>
+				<td>№</td>
+				<td class="center-align ">Логин</td>
+				<td class="center-align">Пароль</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for d in data %}
+			<tr>
+				<td>  {{d.id|escape}}</td>
+				<td class="center-align">  {{d.login|escape}}</td>
+				<td class="center-align">  {{d.password|escape}}</td>
+				<td><a name="edit" href="?id={{d.id}}&action=edit" class="center-align">Изменить пароль</a></td>
+				<td><a name="del" href="?id={{d.id}}&action=del" class="center-align">Удалить</a></td>
+			</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+</div>
+<div class="row">
+<div class="col s12">
+
+		<form action="" method="POST">
+			<br>
+			<input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить администратора" > <br><br>
+		</form>
+</div>
+</div>
+{% endblock %}

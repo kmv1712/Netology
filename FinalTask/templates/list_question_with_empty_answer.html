@@ -1,0 +1,25 @@
+{% extends "admin.html" %}
+
+
+{% block list_question_with_empty_answer %}
+		<!-- Список вопросов без ответов -->
+		<table>
+			<thead>
+				<td>Дата вопроса</td>
+				<td>Вопрос</td>
+				<td>Категория</td>
+				<td>Редактировать</td>
+				<td>Удалить</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>21.09.2017</td>
+					<td>В чем свысл жизни</td>
+					<td>Жизнь</td>
+					<td>Редактировать</td>
+					<td>Удалить</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Список вопросов без ответов (конец) -->
+{% endblock %}

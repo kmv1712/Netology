@@ -1,0 +1,53 @@
+{% extends "admin.html" %}
+
+
+{% block list_category %}
+	<!-- Статистика по категориям -->
+
+<div class="row ">
+	<div class="row"> <div class= "col s12 "><h5>Статистика по категориям</h5></div></div>
+
+	<table>
+		<thead>
+			<td class="center-align">Список тем</td>
+			<td class="center-align">Всего вопросов по теме</td>
+			<td class="center-align">Опублековано вопросов в теме</td>
+			<td class="center-align">Вопросы без ответа</td>
+		</thead>
+
+		<tbody>
+			<tr >
+				<td class="center-align"><a href="">Правила</a></td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+			</tr>
+			<tr >
+				<td class="center-align"><a href="">Mobile</a></td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+			</tr>
+			<tr >
+				<td class="center-align"><a href="">phone</a></td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+				<td class="center-align">0</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="col s12">
+		<div class="row red ligten-1">
+			<form action="" method="POST">
+				<div class="col s6">
+					<input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
+				</div> 	
+				<div class="col s6">
+					<input class = "waves-effect waves-light btn col s12" type="submit" value = "Удалить тему и вопросы в ней" > 
+				</div> 	
+			</form>
+		</div> 	
+	</div>
+</div>
+{% endblock %}

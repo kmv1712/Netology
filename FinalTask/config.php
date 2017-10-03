@@ -16,4 +16,5 @@ $password ='';
 $nameBase = 'questions';
 $tableCategorie = 'categories';
 $tableQuestion = 'question';
-
+$userQuestion = 'Задать вопрос';
+$nameTableAdmin = 'admin';

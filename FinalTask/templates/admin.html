@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width = device-widht, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class="row red ligten-1">
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+			<div class="col s1 red"><br></div>
+			<div class="col s1 green"><br></div>
+		</div>
+
+		<!-- Список администраторов (начало)-->
+		{% block list_admin %}
+		{% endblock %}
+		<!-- Список администраторов (конец)-->
+
+
+		<!-- Статистика по категориям (начало)-->
+		{% block list_category %}
+		{% endblock %}
+		<!-- Статистика по категориям (конец)-->
+
+		<!-- Дата, вопрос, статус определенной темы (начало)-->
+		{% block list_question %}
+		{% endblock %}
+		<!-- Дата, вопрос, статус определенной темы (конец)-->
+
+		<!-- Форма вывода вопрос ответ (начало) -->
+		{% block form_for_admin %}
+		{% endblock %}
+		<!-- Форма вывода вопрос ответ (конец) -->	
+
+		<!-- Список вопросов без ответов -->
+		{% block list_question_with_empty_answer %}
+		{% endblock %}
+		<!-- Список вопросов без ответов (конец) -->
+	</div>
+
+</div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>
