@@ -19,8 +19,8 @@ def get_people():
         if (number == item['number']):
             print (item['name'])
             return
-        else: 
-            print ('Нет такого пользователя')
+        # else: 
+        #     print ('Нет такого пользователя')
 
 # p = get_people()
 
@@ -37,9 +37,8 @@ def get_shelf():
   for key, value in directories.items():
       # print (value)
     # print('{0} {1}'. format(key, value))
-    for item in value:
-      if (number == item):
-        print (key)
+    if (item in value):
+      print (key)
       
 # s = get_shelf()
 
@@ -59,15 +58,16 @@ def get_add():
       value.append(number)
       print('{0} {1}'. format(key, value))
       return
-    
-# a = get_add()
-print ("Введите команду p, l , s , a")
-user = input()
-if (user == 'a'):
-  a = get_add()
-elif (user == 's'):
-  s = get_shelf()
-elif (user == 'l'):
-  l = get_list()
-elif (user == 'p'):
-  p = get_people()
+
+while (input('Введите символ и нажмите enter для запуска программы или нажмите enter для выхода из нее') != ""):
+  # a = get_add()
+  print ("Введите команду p, l , s , a")
+  user = input()
+  if (user == 'a'):
+    a = get_add()
+  elif (user == 's'):
+    s = get_shelf()
+  elif (user == 'l'):
+    l = get_list()
+  elif (user == 'p'):
+    p = get_people()
