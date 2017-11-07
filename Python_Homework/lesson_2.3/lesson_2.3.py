@@ -18,9 +18,9 @@ def get_chardet(file):
         # print(decoded_string)
         data = json.loads(decoded_string)
         # pprint(data)
-        for i in range(40):
+        for item in data['rss']['channel']['items']:
             # print(data ['rss']['channel']['items'][i]['description'])
-            allDescription.append(data['rss']['channel']['items'][i]['description'])
+            allDescription.append(item['description'])
         # pprint(allDescription)
         # allDescription = map(str.strip, allDescription)
         # pprint(allDescription)
