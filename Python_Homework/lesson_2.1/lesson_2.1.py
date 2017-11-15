@@ -1,26 +1,26 @@
 # coding=utf-8
 def get_cook_book():
-    global cook
     cook_book = {}
 
     with open('list_recipes.txt') as file:
         for line in file:
             dish = line.strip()
+            dish = dish.replace(' ','')
+            dish = dish.replace('-','')
             if dish.isalpha():
                 cook = dish
                 cook_book[cook] = []
             elif dish.isdigit():
                 # print (int(dish))
-                i = 0
-                while i < int(dish):
+                for i in range(int(dish)):
                     ingridient_book = {}
                     another_line = file.readline()
                     another_line = another_line.strip()
+                    another_line = another_line.replace(' ','')
                     another_line = another_line.split('|')
                     ingridient_book['ingridient_name'] = another_line[0]
                     ingridient_book['quantity'] = another_line[1]
                     ingridient_book['measure'] = another_line[2]
-                    i = i + 1
                     cook_book[cook].append(ingridient_book)
                     # print (ingridient_book)
     # print (cook_book)
@@ -32,6 +32,8 @@ def get_shop_list_by_dishes(dishes, person_count):
     cook_book = get_cook_book()
     # print (cook_book)
     for dish in dishes:
+        dish = dish.replace(' ', '')
+        dish = dish.replace('-', '')
         for ingridient in cook_book[dish]:
             new_shop_list_item = dict(ingridient)
 
