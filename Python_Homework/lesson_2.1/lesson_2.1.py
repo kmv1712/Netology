@@ -7,6 +7,7 @@ def get_cook_book():
             dish = line.strip()
             dish = dish.replace(' ','')
             dish = dish.replace('-','')
+            dish = dish.lower()
             if dish.isalpha():
                 cook = dish
                 cook_book[cook] = []
