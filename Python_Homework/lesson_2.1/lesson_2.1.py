@@ -5,8 +5,8 @@ def get_cook_book():
     with open('list_recipes.txt') as file:
         for line in file:
             dish = line.strip()
-            dish = dish.replace(' ','')
-            dish = dish.replace('-','')
+            dish = dish.replace(' ', '')
+            dish = dish.replace('-', '')
             dish = dish.lower()
             if dish.isalpha():
                 cook = dish
@@ -17,7 +17,6 @@ def get_cook_book():
                     ingridient_book = {}
                     another_line = file.readline()
                     another_line = another_line.strip()
-                    another_line = another_line.replace(' ','')
                     another_line = another_line.split('|')
                     ingridient_book['ingridient_name'] = another_line[0]
                     ingridient_book['quantity'] = another_line[1]
@@ -57,6 +56,12 @@ def create_shop_list():
     dishes = input('Введите блюда в расчете на одного человека (через запятую): ').lower().split(', ')
     shop_list = get_shop_list_by_dishes(dishes, person_count)
     print_shop_list(shop_list)
+
+
+def is_dish_name(dish):
+    dish = dish.replace(' ', '')
+    dish = dish.replace('-', '')
+    return dish
 
 
 create_shop_list()
