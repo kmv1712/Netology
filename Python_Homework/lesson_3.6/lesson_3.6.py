@@ -13,68 +13,38 @@ class Animals:
     def get_color(self):
         print(str(self.name) + " имеет " + str(self.color) + " цвет ")
 
-
-class Cows(Animals):
-    sound = "Му"
-
     def __init__(self, name, weight, color):
         self.name = name
         self.weight = weight
         self.color = color
+
+
+class Cows(Animals):
+    sound = "Му"
 
 
 class Goats(Animals):
     sound = "Ме-е"
 
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
-
 
 class Sheeps(Animals):
     sound = "Бе-е"
-
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
 
 
 class Pigs(Animals):
     sound = "Хрю-Хрю"
 
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
-
 
 class Ducks(Animals):
     sound = "Кря-Кря"
-
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
 
 
 class Hens(Animals):
     sound = "Ко-Ко-Ко"
 
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
-
 
 class Geese(Animals):
     sound = "Га-га-га"
-
-    def __init__(self, name, weight, color):
-        self.name = name
-        self.weight = weight
-        self.color = color
 
 
 cow = Cows('Корова', 100, 'белый')
