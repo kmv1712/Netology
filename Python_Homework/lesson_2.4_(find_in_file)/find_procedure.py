@@ -55,7 +55,7 @@ def get_sql_file_list():
     for d, dirs, files in tree:
         for f in files:
             # Ищем названия с расширением sql
-            if f.endswith('sql'):
+            if f.endswith('.sql'):
                 sql_file_list.append(f)
     return sql_file_list
 
@@ -71,13 +71,13 @@ def get_list_for_search_word(user_input, sql_file_list):
             if search_word is not None:
                 # Добавляем в список файлы с искомым словом
                 file_list.append(file)
-    print(file_list)
+    for item in file_list:
+        print(item)
     print('Всего: {}'.format(len(file_list)))
     return file_list
 
 
 if __name__ == '__main__':
-    i = 0
     sql_file_list = get_sql_file_list()
     while True:
         user_input = input('Введите строку:')
