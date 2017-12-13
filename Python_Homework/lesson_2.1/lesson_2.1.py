@@ -5,10 +5,10 @@ def get_cook_book():
     with open('list_recipes.txt') as file:
         for line in file:
             dish = line.strip()
-            dish = dish.replace(' ', '')
-            dish = dish.replace('-', '')
+            # dish = dish.replace(' ', '')
+            # dish = dish.replace('-', '')
             dish = dish.lower()
-            if dish.isalpha():
+            if is_dish_name(dish):
                 cook = dish
                 cook_book[cook] = []
             elif dish.isdigit():
@@ -32,8 +32,8 @@ def get_shop_list_by_dishes(dishes, person_count):
     cook_book = get_cook_book()
     # print (cook_book)
     for dish in dishes:
-        dish = dish.replace(' ', '')
-        dish = dish.replace('-', '')
+        # dish = dish.replace(' ', '')
+        # dish = dish.replace('-', '')
         for ingridient in cook_book[dish]:
             new_shop_list_item = dict(ingridient)
 
@@ -59,9 +59,11 @@ def create_shop_list():
 
 
 def is_dish_name(dish):
-    dish = dish.replace(' ', '')
-    dish = dish.replace('-', '')
-    return dish
+    for symbol in dish:
+        if symbol.isalpha() or symbol == '-':
+            return True
+        else:
+            return False
 
 
 create_shop_list()
