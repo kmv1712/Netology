@@ -52,18 +52,21 @@ def print_shop_list(shop_list):
 
 
 def create_shop_list():
-    person_count = int(input('Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РµР»РѕРІРµРє: '))
-    dishes = input('Р’РІРµРґРёС‚Рµ Р±Р»СЋРґР° РІ СЂР°СЃС‡РµС‚Рµ РЅР° РѕРґРЅРѕРіРѕ С‡РµР»РѕРІРµРєР° (С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ): ').lower().split(', ')
+    person_count = int(input('Введите количество человек: '))
+    dishes = input('Введите блюда в расчете на одного человека (через запятую): ').lower().split(', ')
     shop_list = get_shop_list_by_dishes(dishes, person_count)
     print_shop_list(shop_list)
 
 
 def is_dish_name(dish):
-    for symbol in dish:
-        if symbol.isalpha() or symbol == '-':
-            return True
-        else:
-            return False
+  if not dish:
+    return False
+  first_symbol = dish[0]
+  if first_symbol.isalpha():
+    return True
+  return False
+
 
 
 create_shop_list()
+
