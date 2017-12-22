@@ -11,14 +11,16 @@ class Animals:
     def get_color(self):
         print(str(self.name) + " имеет " + str(self.color) + " цвет ")
 
-    def get_who(self):
-        print(str(self.name) + ' ' + str(self.type))
+    # def get_who(self):
+    #     print(str(self.name) + ' ')
 
-    def __init__(self, name, weight, color, type):
+    def __init__(self, name, weight, color):
         self.name = name
         self.weight = weight
         self.color = color
-        self.type = type
+
+    def get_sound(self):
+        print(str(self.name) + ' говорит ' + str(self.sound))
 
 
 class Bird(Animals):
@@ -36,53 +38,86 @@ class Mammal(Animals):
     def get_feature(self):
         print(str(self.name) + " " + str(self.does_not_fly) + " и " + str(self.walks_the_ground))
 
+class Сow(Mammal):
+    sound = 'Му'
 
-cow = Mammal('Зорька', 100, 'белый', 'корова')
+class Goat(Mammal):
+    sound = 'Бе-е'
+
+class Sheep(Mammal):
+    sound = 'Ме-е'
+
+class Pig(Mammal):
+    sound = 'Хрю'
+
+class Duck(Bird):
+    sound = 'Кря'
+
+class Hen(Bird):
+    sound = 'Ко-ко-ко'
+
+class Goose(Bird):
+    sound = 'Га-га-га'
+
+
+class Mammal(Animals):
+    does_not_fly = 'не летает'
+    walks_the_ground = 'ходит по Земле'
+
+    def get_feature(self):
+        print(str(self.name) + " " + str(self.does_not_fly) + " и " + str(self.walks_the_ground))
+
+cow = Сow('Зорька', 100, 'белый')
 cow.get_weight()
 cow.get_color()
-cow.get_who()
+cow.get_sound()
 cow.get_feature()
-
 print()
 
-goat = Mammal('Бешка', 30, 'бело-серый', 'Овца')
+goat = Goat('Бешка', 30, 'бело-серый')
 goat.get_weight()
 goat.get_color()
-goat.get_who()
+goat.get_sound()
 goat.get_feature()
+
 print()
 
-sheep = Mammal('Мешка', 20, 'кремовый', 'Коза')
+sheep = Sheep('Мешка', 20, 'кремовый')
 sheep.get_weight()
 sheep.get_color()
-sheep.get_who()
+sheep.get_sound()
 sheep.get_feature()
+
 print()
 
-pig = Mammal('Хрюша', 40, 'розовый', 'Свинья')
+pig = Pig('Хрюша', 40, 'розовый')
 pig.get_weight()
 pig.get_color()
-pig.get_who()
+pig.get_sound()
 pig.get_feature()
+
 print()
 
-duck = Bird('Бело-шейка', 5, 'коричневый', 'Утка')
+duck = Duck('Бело-шейка', 5, 'коричневый')
 duck.get_weight()
 duck.get_color()
-duck.get_who()
+duck.get_sound()
 duck.get_feature()
+
 print()
 
-hen = Bird('Рябушка', 3, 'коричневый', 'Курица')
+hen = Hen('Рябушка', 3, 'коричневый')
 hen.get_weight()
 hen.get_color()
-hen.get_who()
+hen.get_sound()
 hen.get_feature()
+
 print()
 
-goose = Bird('Кусач', 6, 'белый', 'Гусь')
+goose = Goose('Кусач', 6, 'белый')
 goose.get_weight()
 goose.get_color()
-goose.get_who()
+goose.get_sound()
 goose.get_feature()
+
 print()
