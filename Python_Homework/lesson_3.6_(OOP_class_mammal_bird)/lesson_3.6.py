@@ -38,23 +38,30 @@ class Mammal(Animals):
     def get_feature(self):
         print(str(self.name) + " " + str(self.does_not_fly) + " и " + str(self.walks_the_ground))
 
-class Сow(Mammal):
+
+class Cow(Mammal):
     sound = 'Му'
+
 
 class Goat(Mammal):
     sound = 'Бе-е'
 
+
 class Sheep(Mammal):
     sound = 'Ме-е'
+
 
 class Pig(Mammal):
     sound = 'Хрю'
 
+
 class Duck(Bird):
     sound = 'Кря'
 
+
 class Hen(Bird):
     sound = 'Ко-ко-ко'
+
 
 class Goose(Bird):
     sound = 'Га-га-га'
@@ -67,11 +74,21 @@ class Mammal(Animals):
     def get_feature(self):
         print(str(self.name) + " " + str(self.does_not_fly) + " и " + str(self.walks_the_ground))
 
-cow = Сow('Зорька', 100, 'белый')
-cow.get_weight()
+
+cow = Cow('Зорька', 100, 'белый')
 cow.get_color()
+cow.get_weight()
 cow.get_sound()
 cow.get_feature()
+
+print()
+
+cow_another = Cow('Буренка', 100, 'Черный')
+cow_another.get_color()
+cow_another.get_weight()
+cow_another.get_sound()
+cow_another.get_feature()
+
 print()
 
 goat = Goat('Бешка', 30, 'бело-серый')
