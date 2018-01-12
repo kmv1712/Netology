@@ -1,37 +1,84 @@
-import os
-import re
 import requests
-import vk
+import time
 
+user_id = 5030613
 user_name = "tim_leary"
-access_key = "5dfd6b0dee902310df772082421968f4c06443abecbc082a8440cb18910a56daca73ac8d04b25154a1128"
+access_token = "5dfd6b0dee902310df772082421968f4c06443abecbc082a8440cb18910a56daca73ac8d04b25154a1128"
 
-url = 'https://vk.com/' + user_name
-
-print (url)
-
-session = vk.Session(access_key)
-vk_api = vk.API(session)
-user = vk_api.users.get(user_id = 5030613)
-group = vk_api.groups.get(user_id = 5030613)
-
-
-# print (user)
-# print (group)
-
-# Выводит по индификатору всю инф о группе groups.getById:
-# print (vk_api.groups.getById(group_id = 22440983))
-
-# Выводит по индификатору всю инф о друзьях friends.get
-# print (vk_api.friends.get(user_id = 5030613))
-
-# send = requests.get("http://api.vk.com/method/users.get?user_id=5030613").json()
-# print(send)
-
+method = 'friends.get'
+url = 'https://api.vk.com/method/' + method
 params = {
-    'group_id' : 22440983,
-    'access_key': access_key
+    'user_id' : user_id,
+    'access_token': access_token
 }
 
-send = requests.get("http://api.vk.com/method/groups.getById", params ).json()
-print(send['response'])
+response_method_friends = requests.get(url, params ).json()
+# print('-------------------------------------')
+# print(response_method_friends ['response'])
+
+list_of_not_deleted_or_banned_friends = []
+for friend in response_method_friends ['response']:
+    # print(friend)
+    method = 'users.get'
+    url = 'https://api.vk.com/method/' + method
+    params = {
+        'user_id': friend,
+        'access_token': access_token
+    }
+    response = requests.get(url, params).json()
+    time.sleep(0.1)
+    try:
+        value = response['response'][0]['deactivated']
+    except KeyError:
+        list_of_not_deleted_or_banned_friends.append(friend)
+#         print('-')
+#         print(response)
+#     for item in response['response'][0]:
+#         if (item != 'deactivated'):
+#             list_of_not_deleted_or_banned_friends.append(friend)
+
+print (list_of_not_deleted_or_banned_friends)
+
+list_of_all_groups_of_friends = []
+for friend in list_of_not_deleted_or_banned_friends:
+    # print(friend)
+    method = 'groups.get'
+    url = 'https://api.vk.com/method/' + method
+    params = {
+        'user_id': friend,
+        'access_token': access_token
+    }
+    time.sleep(0.1)
+    response = requests.get(url, params).json()
+    try:
+        value = response['response']
+    except KeyError:
+        response['response'] = [0]
+#     print(response['response'])
+#     print('---------')
+    list_of_all_groups_of_friends.append(response['response'])
+
+# print (list_of_all_groups_of_friends)
+
+list_of_all_groups_of_friends = sum(list_of_all_groups_of_friends, [])
+
+method = 'groups.get'
+url = 'https://api.vk.com/method/' + method
+params = {
+    'user_id': user_id,
+    'access_token': access_token
+}
+
+response = requests.get(url, params ).json()
+print(response['response'])
+user_groups = response['response']
+# print('-------------------------------------')
+# print(len(response['response']))
+
+unique_groups_user = []
+for group in user_groups:
+    for groups_of_friends in list_of_all_groups_of_friends:
+        if group != groups_of_friends:
+            unique_groups_user.append(group)
+
+print(unique_groups_user)
