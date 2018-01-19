@@ -28,7 +28,7 @@ def get_list_of_not_deleted_or_banned_friends():
             'access_token': access_token
         }
         response = requests.get(url, params).json()
-        time.sleep(0.1)
+        time.sleep(0.5)
         #         print(response)
         try:
             value = response['response'][0]['deactivated']
@@ -54,7 +54,7 @@ def get_list_of_all_groups_of_friends(list_of_not_deleted_or_banned_friends):
             'user_id': friend,
             'access_token': access_token
         }
-        time.sleep(0.1)
+        time.sleep(0.5)
         response = requests.get(url, params).json()
         try:
             value = response['response']
